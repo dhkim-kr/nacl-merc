@@ -1,4 +1,11 @@
-# [Under Review] Cross-Modal Alignment for Robust Multimodal Fusion in Conversational Emotion Recognition
+# Cross-Modal Alignment for Robust Multimodal Fusion in Conversational Emotion Recognition
+
+## Status
+
+| Item | Status |
+|---|---|
+| Research | Under review · Expert Systems with Applications |
+| Implementation | Pretraining, fine-tuning, evaluation, and configuration files |
 
 <div align="center">
 
@@ -14,10 +21,6 @@
 </div>
 
 ---
-
-## Manuscript and implementation
-
-Submitted to *Expert Systems with Applications* on August 11, 2026; under review. The repository includes pretraining, fine-tuning, graph construction, configuration files, and evaluation code. Dataset features and trained checkpoints must be supplied locally.
 
 ## Architecture
 
@@ -186,7 +189,7 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 - **IEMOCAP:** evaluated under 4-way and 6-way emotion classification settings, including MELD-to-IEMOCAP transfer.
 - **Primary metric:** weighted F1 score (**w.F1**), reported in percent unless otherwise stated.
 
-### Performance at a Glance
+### Main results
 
 <table>
   <tr>
@@ -218,7 +221,7 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 <br>
 
 <details open>
-<summary><strong>🏆 Main Benchmark Results</strong> <sub>— IEMOCAP 4-way, IEMOCAP 6-way, and MELD</sub></summary>
+<summary><strong>Main Benchmark Results</strong> <sub>— IEMOCAP 4-way, IEMOCAP 6-way, and MELD</sub></summary>
 
 <br>
 
@@ -239,7 +242,6 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 | MTG-ERC | 2025 | Hybrid | 81.6 | 87.0 | 83.5 | 80.5 | 83.6 |
 | Ours (Scratch) | - | Unified | **88.3** | 84.3 | 77.5 | 82.6 | 82.0 |
 | **Ours (Transferred)** | - | Unified | 87.2 | **88.8** | 81.2 | 83.1 | **84.7** |
-
 
 </details>
 
@@ -265,7 +267,6 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 | Ours (Scratch) | - | Unified | 46.2 | 82.0 | 64.6 | 68.2 | **84.4** | 59.7 | 70.4 |
 | **Ours (Transferred)** | - | Unified | 50.4 | **85.4** | 64.3 | 71.8 | **84.4** | 59.6 | **71.9** |
 
-
 </details>
 
 <br>
@@ -290,7 +291,6 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 | GPCC | 2026 | Hybrid | 80.4 | 57.9 | **46.3** | 64.1 | 55.3 | 66.9 |
 | **Ours (Scratch)** | - | Unified | **85.6** | **66.6** | 38.9 | 61.6 | 54.5 | **68.8** |
 
-
 </details>
 
 <br>
@@ -300,7 +300,7 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 <br>
 
 <details open>
-<summary><strong>🧪 Ablation Studies</strong> <sub>— component, fine-tuning, and objective contributions</sub></summary>
+<summary><strong>Ablation Studies</strong> <sub>— component, fine-tuning, and objective contributions</sub></summary>
 
 <br>
 
@@ -324,7 +324,6 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 | 6 | Yes | Yes | Yes | Yes | Yes | - | 84.23 (**+1.50**) | 71.48 (**+0.67**) |
 | 7 | Yes | Yes | Yes | Yes | Yes | Yes | **84.65 (+0.42)** | **71.91 (+0.43)** |
 
-
 </details>
 
 <br>
@@ -344,7 +343,6 @@ The experiments use two Multimodal Emotion Recognition in Conversation (MERC) be
 | Full Fine-tuning | **84.65** | 70.99 |
 
 \* In the backbone-frozen setting, only the graph encodings, linear fusion layer, and linear classifier are fine-tuned.
-
 
 </details>
 
@@ -384,7 +382,6 @@ Key gains in w.F1:
   </tr>
 </table>
 
-
 </details>
 
 <br>
@@ -394,7 +391,7 @@ Key gains in w.F1:
 <br>
 
 <details open>
-<summary><strong>🔬 Additional Analyses</strong> <sub>— representation geometry and missing-modality robustness</sub></summary>
+<summary><strong>Additional Analyses</strong> <sub>— representation geometry and missing-modality robustness</sub></summary>
 
 <br>
 
@@ -421,7 +418,7 @@ Key gains in w.F1:
 | IEMOCAP 6-way | Within-modal L2 ↑* | 9.77 ± 5.91 | 15.80 ± 2.83 | 16.27 ± 2.13 | **16.36 ± 1.61** | 12.96 ± 1.48 |
 | IEMOCAP 6-way | Between-modal L2 ↓ | 24.04 ± 0.22 | 24.13 ± 0.38 | 23.99 ± 0.60 | 21.47 ± 0.22 | **12.68 ± 2.35** |
 
-\* The paper displays an upward arrow for Within-modal L2, while its table note states that lower values indicate compactness. The authors do not interpret this metric as simply "lower is better": an excessively small value, particularly with high variance and a large between-modal gap, may indicate modality collapse.
+\* Within-modal L2 measures representation spread. Interpret it jointly with variance and between-modal distance; very low spread can indicate modality collapse.
 
 All values are averaged across modality pairs or across the three modalities, as applicable.
 
@@ -471,7 +468,6 @@ All values are averaged across modality pairs or across the three modalities, as
 | T + V | 60.77 | 63.94 | **68.09** | 67.23 |
 | V + A | 53.07 | 54.25 | 53.93 | **53.95** |
 | **A + T + V** | 81.67 | 83.11 | 83.70 | **84.65** |
-
 
 </details>
 
